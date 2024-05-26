@@ -1,0 +1,84 @@
+body {
+	 background: url(1676106202555.jpg);
+	 background-repeat:no-repeat;
+	 position:static;
+	background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+.container-fluid{
+padding-left:0px;
+}
+.jumbotron h1{
+	padding-bottom:0px;
+	font-weight:bold;
+	font-size:50px;
+	font-family:vernada;
+	text-align:center;
+	color:#FFCC00;
+}
+.form-area {
+	padding-top:0px;
+}
+.row.single-form {
+	box-shadow: 0 2px 20px -5px rgba(0,0,0,0.5);
+}
+.left {
+	background:#FFCC00;
+	padding: 100px 98px;
+}
+.left h2 {
+	font-family: poppins;
+	color: black;
+	font-weight: 700;
+	font-size: 48px;
+}
+.left h2 span {
+	font-weight:100;
+	font-size:60px;
+}
+.left span{
+  margin-right: 20px;
+  font-size: 25px;
+}
+.left p{
+	font-size:25px;
+font-family:vernada;
+color:black;}
+	
+.single-form{
+    background:black;
+}
+.right {
+	padding: 70px 100px;
+position: relative;
+}
+.right i {
+	position: absolute;
+	font-size: 80px;
+	left:-27px;
+	top: 40%;
+	color: black;
+}
+.form-control {
+	border: 2px solid #000;
+}
+.right button {
+	border: none;
+	border-radius: 5px;
+	background:#FFCC00;
+	width: 180px;
+	color:black;
+	padding-top:15px;
+	padding-bottom:15px;
+	font-size: 16px;
+	margin-top: 20px;
+	cursor: pointer;
+}
+.right button:hover{
+    background-color:black;
+	color:#FFCC00;
+}
+
+
+

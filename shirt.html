@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .product-image {
+            flex: 1 1 300px;
+        }
+
+        .product-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .product-details {
+            flex: 2 1 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .product-details h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .product-details p {
+            font-size: 18px;
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .product-details .price {
+            font-size: 22px;
+            margin-top: 20px;
+            color: green;
+            font-weight: bold;
+        }
+
+        .product-details button {
+            padding: 10px;
+            background-color: navy;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .product-details button:hover {
+            background-color: black;
+        }
+        h1{
+           text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .body{
+            overflow: visible;
+        }
+        @keyframes moveText {
+            0% { left:100%; } 
+            100% { left: -75%; } 
+        }
+
+        .moving-text-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            overflow: hidden;
+        }
+
+        .moving-text {
+            position: absolute;
+            top: 10px;
+            left: 100%;
+            white-space: nowrap;
+            font-family: Verdana;
+            font-weight: bold;
+            font-size: 15px;
+            color: goldenrod;
+            animation: moveText 20s linear infinite;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 14px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 400;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .navbar a:after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 50%;
+            width: 1px;
+            background-color: #5e5d5d;
+        }
+
+        .navbar a:last-child:after {
+            display: none;
+        }
+
+        .navbar a i {
+            padding-right: 5px;
+            font-size: 22px; 
+            vertical-align: middle;
+        }
+
+        .nav1 {
+            padding: 20px;
+            background-color: navy;
+        }
+
+        .items {
+            float: right;
+        }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+            font-size: 14px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 400;
+            display:block;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font: inherit;
+            margin: 0;
+        }
+
+        .navbar a:hover, .dropdown:hover .dropbtn {
+            background-color: black;
+            color: gold;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            width: 100%;
+            left: 0;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .column {
+            float: left;
+            width: 20%;
+            padding: 30px;
+            background-color: white;
+            text-align: center; 
+        }
+
+        .column img {
+            width: 150px;
+            height: 75px;
+            display: block;
+            margin: auto; 
+            margin-bottom: 10px;
+        }
+        .column .topic {
+            font-weight: bold;
+            color: #333;
+            margin: auto; 
+        }
+
+        .column a {
+            color: black;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .column a:hover {
+            background-color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="nav1">
+        <div class="moving-text" style="background-color: navy;">Get flat Rs.500 off - Use code ASAPP500. Valid on your first order on CROYEZ CLOTHING above Rs 2000. *T&Cs apply.</div>
+    </div>
+    <div class="navbar">
+        <div class="dropdown">
+            <button class="dropbtn">TOP BRANDS
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <div class="row">
+                    <div class="column">
+                        <img src="brand1-logo.png" alt="Brand 1">
+                        <div class="topic">TECHNO SPORTS</div>
+                    </div>
+                    <div class="column">
+                        <img src="brand2-logo.png" alt="Brand 2">
+                        <div class="topic">BLACK LETTER</div>
+                    </div>
+                    <div class="column">
+                        <img src="brand3-logo.png" alt="Brand 3">
+                        <div class="topic">LOGOFF</div>
+                    </div>
+                    <div class="column">
+                        <img src="brand4-logo.png" alt="Brand 4">
+                        <div class="topic">BOULTER</div>
+                    </div>
+                    <div class="column">
+                        <img src="brand5-logo.png" alt="Brand 5">
+                        <div class="topic">FRENCH AMERICA</div>
+                    </div>
+                    <div class="column">
+                        <img src="brand6-logo.png" alt="Brand 6">
+                        <div class="topic">KRIMTY</div>
+                    </div>
+                    <div class="column">
+                        <img src="brand7-logo.png" alt="Brand 7">
+                        <div class="topic">WILD STUDIO</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="items">
+            <a href="clothing.html"><i class="fa fa-home"></i> HOME</a>
+            <a href="https://www.google.com/maps/place/croyez+clothing/@11.2745617,77.5837285,15z/data=!4m6!3m5!1s0x3ba96d43df8f5975:0x4abea69ae700d665!8m2!3d11.2745617!4d77.5837285!16s%2Fg%2F11g8bwnwj9?entry=ttu"><i class="fa fa-map-marker" aria-hidden="true"></i> STORES</a>
+            <a href="login.html"><i class="fa fa-sign-in" aria-hidden="true"></i> LOGIN</a>
+            <a href="#contact"><i class="fa fa-phone" aria-hidden="true"></i> CONTACT</a>
+        </div>
+    </div>
+    <h1>DENIM SHIRT</h1>
+    <div class="container">
+        <div class="product-image">
+            <img src="shirt denim 1.jpeg" alt="Shirt Image">
+        </div>
+        <div class="product-details">
+            <h2>Brand Name: PORT CASTLE</h2>
+            <p>Type: Denim</p>
+            <p>Color: Light Blue,Navy,Black,Blue</p>
+            <p>Size: S, M, L, XL, XXL</p>
+            <p class="price">Price: Rs.700</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+    <h1>PLAIN SHIRTS</h1>
+    <div class="container">
+        <div class="product-image">
+            <img src="shirt plain 1.jpeg" alt="Shirt Image">
+        </div>
+        <div class="product-details">
+            <h2>Brand Name: JIBOUTI</h2>
+            <p>Type: PLAIN</p>
+            <p>Color: Blue, Navy, Red, White ,Pink</p>
+            <p>Size: S, M, L, XL, XXL</p>
+            <p class="price">Price: Rs.550</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="product-image">
+            <img src="shirt plain 2.jpeg" alt="Shirt Image">
+        </div>
+        <div class="product-details">
+            <h2>Brand Name: BLACK LETTER</h2>
+            <p>Type: Plain</p>
+            <p>Color: Blue, Navy , Breach, Red, Grey ,Brown and ect...</p>
+            <p>Size: S, M, L, XL</p>
+            <p class="price">Price: Rs.650</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="product-image">
+            <img src="shirt plain 3.jpeg" alt="Shirt Image">
+        </div>
+        <div class="product-details">
+            <h2>Brand Name: JIBOUTI</h2>
+            <p>Type: Plain</p>
+            <p>Color: Blue, Green,  Navy , Breach, Red, Grey ,Brown and ect...</p>
+            <p>Size: S, M, L, XL, XXL</p>
+            <p class="price">Price: Rs.600</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+    <h1>STRIPED SHIRTS</h1>
+    <div class="container">
+        <div class="product-image">
+            <img src="shirt strip 1.jpeg" alt="Shirt Image">
+        </div>
+        <div class="product-details">
+            <h2>Brand Name: BLACK LETTER</h2>
+            <p>Type: Striped Shirt</p>
+            <p>Color: Blue, Grey, Navy, Red, Green ,Black</p>
+            <p>Size: S, M, L, XL, XXL</p>
+            <p class="price">Price: Rs.625</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="product-image">
+            <img src="shirt strip 2.jpeg" alt="Shirt Image">
+        </div>
+        <div class="product-details">
+            <h2>Brand Name: BLACK LETTER</h2>
+            <p>Type: Striped Shirt</p>
+            <p>Color: Blue, Navy ,green ,Grey, Red, Black</p>
+            <p>Size: S, M, L, XL, XXL, XXXL</p>
+            <p class="price">Price: Rs.650</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="product-image">
+            <img src="shirt strip 3.jpeg" alt="Shirt Image">
+        </div>
+        <div class="product-details">
+            <h2>Brand Name: JIBOUTI</h2>
+            <p>Type: Striped Shirt</p>
+            <p>Color: White, Breach, Black, Green</p>
+            <p>Size: S, M, L, XL, XXL</p>
+            <p class="price">Price: Rs.600</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+    <h1>CHECKED SHIRTS</h1>
+    <div class="container">
+        <div class="product-image">
+            <img src="shirt checked 1.jpeg" alt="Shirt Image">
+        </div>
+        <div class="product-details">
+            <h2>Brand Name: SUPER RICH</h2>
+            <p>Type: Checked</p>
+            <p>Color: Blue ,Navy, Black, White, Sandal, Green, Yellow</p>
+            <p>Size: S, M, L, XL, XXL</p>
+            <p class="price">Price: Rs.575</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="product-image">
+            <img src="shirt checked 2.jpeg" alt="Shirt Image">
+        </div>
+        <div class="product-details">
+            <h2>Brand Name: DISTRACT</h2>
+            <p>Type: Checked</p>
+            <p>Color: Blue ,Navy, Black, White, Sandal, Green, Yellow</p>
+            <p>Size: S, M, L, XL, XXL</p>
+            <p class="price">Price: Rs.650</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="product-image">
+            <img src="shirt checked 3.jpeg" alt="Shirt Image">
+        </div>
+        <div class="product-details">
+            <h2>Brand Name: JIBOUTI</h2>
+            <p>Type: Checked</p>
+            <p>Color: Blue ,Navy, Black, White, Sandal, Green, Yellow</p>
+            <p>Size: S, M, L, XL, XXL</p>
+            <p class="price">Price: Rs.600</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="product-image">
+            <img src="shirt checked 4.jpeg" alt="Shirt Image">
+        </div>
+        <div class="product-details">
+            <h2>Brand Name: BLACK LETTER</h2>
+            <p>Type: Checked</p>
+            <p>Color: Navy, White, Green, Black</p>
+            <p>Size: S, M, L, XL, XXL</p>
+            <p class="price">Price: Rs.600</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="product-image">
+            <img src="shirt checked 6.jpeg" alt="Shirt Image">
+        </div>
+        <div class="product-details">
+            <h2>Brand Name: LOGOFF</h2>
+            <p>Type: Checked</p>
+            <p>Color: Blue, Black,Yellow, Green</p>
+            <p>Size: S, M, L, XL, XXL</p>
+            <p class="price">Price: Rs.650</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+    <h1>PRINTED SHIRT</h1>
+    <div class="container">
+        <div class="product-image">
+            <img src="shirt printed 1.jpeg" alt="Shirt Image">
+        </div>
+        <div class="product-details">
+            <h2>Brand Name: JIBOUTI</h2>
+            <p>Type: Printed</p>
+            <p>Color: Navy, Green ,Blue, White and ect..</p>
+            <p>Size: S, M, L, XL, XXL</p>
+            <p class="price">Price: Rs.575</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="product-image">
+            <img src="shirt printed 2.jpeg" alt="Shirt Image">
+        </div>
+        <div class="product-details">
+            <h2>Brand Name: JIBOUTI</h2>
+            <p>Type: Printed</p>
+            <p>Color: Navy ,Green, Black</p>
+            <p>Size: S, M, L, XL, XXL</p>
+            <p class="price">Price: Rs.625</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+    <script>
+        let slideIndex = 0;
+        let timer;
+
+        function showSlides() {
+            const slides = document.querySelectorAll('.slide');
+            if (slideIndex >= slides.length) {
+                slideIndex = 0;
+            }
+            const slideWidth = slides[0].clientWidth;
+            document.querySelector('.slide-container').style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+        }
+
+        function nextSlide() {
+            slideIndex++;
+            showSlides();
+        }
+
+        function prevSlide() {
+            slideIndex--;
+            showSlides();
+        }
+
+        function startTimer() {
+            timer = setInterval(nextSlide, 3000); 
+        }
+
+        function stopTimer() {
+            clearInterval(timer);
+        }
+
+        startTimer();
+    </script>
+</body>
+</html>
